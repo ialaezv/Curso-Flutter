@@ -16,20 +16,16 @@ class Listview2Screen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('ListView Tipo 2'),
         ),
-        body: ListView(
-          children: [
-            // * Iteració de un array per extreure el seu contingut en un ListTitle         
-            ...options.map(
-              (game) => ListTile(
-                title: Text(game),
-                trailing: const Icon(Icons.arrow_forward_ios_outlined),
-              )
-            ).toList(),
-
-            
-
-          ],
-
+        body: ListView.separated(
+          itemCount: options.length,
+          itemBuilder: (context, index) => ListTile(
+            title: Text(options[index]),
+            trailing: const Icon(Icons.arrow_forward_ios_outlined, color: Colors.indigo,),
+            onTap: () {
+            },
+          ),
+          // * Utilitzem _ en variables que no utilitzarem o funcions que no retornene res!!!!
+          separatorBuilder: (_, __) => const Divider(),
         ));
   }
 }
